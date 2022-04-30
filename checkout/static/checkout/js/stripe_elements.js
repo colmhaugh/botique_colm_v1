@@ -43,12 +43,12 @@ card.addEventListener('change', function (event) {
     }
 });
 
-// Handle form submit
+// Handle form submit, from stripe documents
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
-    card.update({ 'disabled': true});
+    card.update({ 'disabled': true}); // to prevent multiple submissions
     $('#submit-button').attr('disabled', true);
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
